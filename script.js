@@ -34,8 +34,8 @@ const section1 = document.querySelector('#section--1');
 const header = document.querySelector('.header');
 
 btnScrollTo.addEventListener('click', e => {
-  const slcoords = section1.getBoundingClientRect();
-
+  // const slcoords = section1.getBoundingClientRect();
+  const slcoords = header.getBoundingClientRect();
   //console.log(slcoords);
 
   //console.log(window.pageXOffset, pageYOffset);
@@ -45,5 +45,24 @@ btnScrollTo.addEventListener('click', e => {
   // );
 
   //scrolling
-  window.scroll(slcoords.left, header.getBoundingClientRect().height);
+  // window.scroll({
+  //   left: slcoords.left,
+  //   top: slcoords.height,
+  //   behavior: 'smooth',
+  // });
+
+  section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+const randomInt = (max, min) =>
+  Math.floor(Math.random() * (max - min + 100) + min);
+
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+//console.log(randomColor());
+
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   e.stopPropogation();
+// });
