@@ -3,6 +3,9 @@
 ///////////////////////////////////////
 // Modal window
 
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+const header = document.querySelector('.header');
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
@@ -28,12 +31,8 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
-const header = document.querySelector('.header');
-
-btnScrollTo.addEventListener('click', e => {
+//button scrolling
+btnScrollTo.addEventListener('click', () => {
   // const slcoords = section1.getBoundingClientRect();
   const slcoords = header.getBoundingClientRect();
   //console.log(slcoords);
@@ -54,11 +53,31 @@ btnScrollTo.addEventListener('click', e => {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-const randomInt = (max, min) =>
-  Math.floor(Math.random() * (max - min + 100) + min);
+//page navigation
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
 
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+//event deligation
+//1. Add event listener to common parent element
+//2. Determine what elemtent originated the event
+
+document.querySelector('.nav__links').addEventListener('click', e => {
+  if (e.target.classList.contains('nav__link')) {
+    e.preventDefault();
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+// const randomInt = (max, min) =>
+//   Math.floor(Math.random() * (max - min + 100) + min);
+
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 
 //console.log(randomColor());
 
