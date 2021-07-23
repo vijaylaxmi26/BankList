@@ -73,6 +73,30 @@ document.querySelector('.nav__links').addEventListener('click', e => {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+//tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', e => {
+  const clicked = e.target.closest('.operations__tab');
+
+  //guard clause
+  if (!clicked) return;
+
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(t => t.classList.remove('operations__content--active'));
+
+  clicked.classList.add('operations__tab--active');
+
+  //console.log(clicked.dataset.tab);
+  //Activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
 // const randomInt = (max, min) =>
 //   Math.floor(Math.random() * (max - min + 100) + min);
 
