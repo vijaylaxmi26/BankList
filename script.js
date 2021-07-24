@@ -312,3 +312,17 @@ slider();
 //   this.style.backgroundColor = randomColor();
 //   e.stopPropogation();
 // });
+
+// document.addEventListener('DOMContentLoaded', function (e) {
+//   console.log('loaded');
+// });
+
+// window.addEventListener('load', function (e) {
+//   //console.log(e);
+// });
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console(e);
+//   e.returnValue = '';
+// });
